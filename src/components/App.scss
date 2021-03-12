@@ -1,7 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
-
-body {
-    font-family: "Roboto", sans-serif;
-    height: 100vh;
+.App {
+  background-color: aqua;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 50px;
+  grid-template-areas:
+    'menu main main main'
+    'menu footer footer footer';
 }
 
+.menu-lateral {
+  background-color: #004d40;
+  grid-area: menu;
+
+  display: flex;
+  align-items: center;
+
+  svg {
+    font-size: 3rem;
+    margin: 1rem;
+  }
+}
+
+main {
+  background-color: coral;
+  grid-area: main;
+}
+
+footer {
+  background-color: brown;
+  grid-area: footer;
+}
+
+a {
+  text-align: center;
+  display: block;
+  font-family: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 2.2fr auto;
+    grid-template-areas:
+      'menu'
+      'main'
+      'footer';
+  }
+}
