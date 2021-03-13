@@ -1,14 +1,16 @@
 import './App.scss';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
-import { IconContext } from 'react-icons';
+import * as HiIcons from 'react-icons/hi';
+import { IconContext as IC } from 'react-icons';
+import Menu from './Menu/index.js'
 
 function App() {
   return (
     <div className="App">
+      <Menu/>
       <header className="menu-lateral">
-        <IconContext.Provider value={{ size: '2rem', className: 'menu-icon' }}>
-          <HiOutlineMenuAlt2 />
-        </IconContext.Provider>
+        <IC.Provider value={{ size: '2rem', className: 'menu-icon' }}>
+          <HiIcons.HiMenuAlt2 />
+        </IC.Provider>
 
         <h1>Exercícios JavaScript</h1>
       </header>

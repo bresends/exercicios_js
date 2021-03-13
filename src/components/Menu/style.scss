@@ -1,0 +1,45 @@
+.menu {
+  position: absolute;
+  width: 70%;
+  height: 100vh;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
+
+  h1 {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+svg.close {
+  margin: .35rem;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  li {
+    border-bottom: 1px solid #bbb;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+
+    img {
+      max-height: 75px;
+    }
+
+    span {
+      font-size: 1.3rem;
+    }
+  }
+}
