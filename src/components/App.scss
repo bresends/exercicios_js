@@ -1,54 +1,134 @@
 .App {
-  background-color: aqua;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 50px;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    'menu main main main'
-    'menu footer footer footer';
+    'header'
+    'main'
+    'footer';
+  
+    
 }
 
-.menu-lateral {
-  background-color: #004d40;
-  grid-area: menu;
-
+header {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.08);
+  grid-area: header;
+  padding: 0.6rem;
   display: flex;
   align-items: center;
 
-  svg {
-    font-size: 3rem;
-    margin: 1rem;
+  .menu-icon {
+    margin-right: 1rem;
+  }
+
+  h1 {
+    font-size: 1.85rem;
   }
 }
 
+
+
 main {
-  background-color: coral;
   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > .card {
+    width: 90%;
+    height: 50%;
+    padding: 1rem;
+    box-shadow: 2px 1px 6px rgba(0,0,0,0.08), -8px -3px 6px rgba(0,0,0,0.08);
+
+    > h1 {
+      text-align: center;
+      font-weight: lighter;
+      margin-bottom: 1rem;
+    }
+
+    > form {
+      display: flex;
+      flex-direction: column;
+
+      > input {
+        width: 100%;
+        margin: 10px auto;
+      }
+    }
+
+    > code {
+      display: block;
+      background-color: green;
+      padding: 25% 1rem;
+    }
+
+    
+  }
 }
 
 footer {
-  background-color: brown;
   grid-area: footer;
+  font-size: 1.2rem;
+  padding: 0.6rem;
   text-align: center;
 }
 
-a {
-  text-align: center;
+
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='url'],
+input[type='password'],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='search']:focus,
+input[type='text']:focus,
+input[type='tel']:focus,
+input[type='url']:focus,
+input[type='password']:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33c3f0;
+  outline: 0;
+}
+label,
+legend {
   display: block;
-  font-family: inherit;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
-
-@media only screen and (max-width: 550px) {
-  .App {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 2.2fr auto;
-    grid-template-areas:
-      'menu'
-      'main'
-      'footer';
-  }
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline;
+}
+label > .label-body {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: normal;
 }
