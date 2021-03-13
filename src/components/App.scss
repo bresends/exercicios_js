@@ -1,17 +1,15 @@
 .App {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header'
     'main'
     'footer';
-  
-    
 }
 
 header {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.08);
   grid-area: header;
   padding: 0.6rem;
   display: flex;
@@ -22,11 +20,9 @@ header {
   }
 
   h1 {
-    font-size: 1.85rem;
+    flex: 1;
   }
 }
-
-
 
 main {
   grid-area: main;
@@ -37,9 +33,10 @@ main {
 
   > .card {
     width: 90%;
-    height: 50%;
+    min-height: 50%;
     padding: 1rem;
-    box-shadow: 2px 1px 6px rgba(0,0,0,0.08), -8px -3px 6px rgba(0,0,0,0.08);
+    box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.08),
+      -8px -3px 6px rgba(0, 0, 0, 0.08);
 
     > h1 {
       text-align: center;
@@ -57,13 +54,12 @@ main {
       }
     }
 
-    > code {
-      display: block;
-      background-color: green;
-      padding: 25% 1rem;
+    > .container-resposta {
+      border: 1px solid #d1d1d1;
+      border-radius: 4px;
+      padding: 1rem 0.5rem 50%;
+      line-height: 1.5rem;
     }
-
-    
   }
 }
 
@@ -74,19 +70,10 @@ footer {
   text-align: center;
 }
 
-
-
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-input[type='email'],
-input[type='number'],
-input[type='search'],
-input[type='text'],
-input[type='tel'],
-input[type='url'],
-input[type='password'],
-textarea,
-select {
+
+input[type='text']{
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
@@ -131,4 +118,34 @@ label > .label-body {
   display: inline-block;
   margin-left: 0.5rem;
   font-weight: normal;
+}
+
+button,
+input[type='submit'] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #33c3f0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #33c3f0;
+  border-color: #33c3f0;
+
+  &:hover {
+    color: #fff;
+    background-color: #1eaedb;
+    border-color: #1eaedb;
+  }
 }
