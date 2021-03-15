@@ -1,10 +1,24 @@
-.menu {
-  position: absolute;
+/* Menus ––––––––––––––––––––––––––––––––––––––––––––– */
+.menu-permanente{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
+  padding: 0.6rem;
+}
+
+.menu-flutuante {
+  position: fixed;
   width: 70%;
+  max-width: 300px;
   height: 100vh;
   margin-bottom: 1rem;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+
   h1 {
     padding-top: 1rem;
     display: flex;
@@ -13,19 +27,14 @@
   }
 }
 
-.inativo{
-  display: none;
+.ativo {
+  left: 0;
+  transition: 350ms;
 }
 
-svg.close {
-  margin: 0.35rem;
-  font-size: 2rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-}
+/* Links ––––––––––––––––––––––––––––––––––––––––––––– */
 
+/* Lista de LinksLinks ––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
   list-style-type: none;
   display: flex;

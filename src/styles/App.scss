@@ -1,3 +1,26 @@
+@import 'colors';
+
+// Estilos Globais 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&//fonts.googleapis.com/css2?family=Raleway:wght@100;386&display=swap');
+
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: $text-color;
+}
+
+
+
 .App {
   min-height: 100vh;
   display: grid;
@@ -8,20 +31,8 @@
     'footer';
 }
 
-header {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
-  grid-area: header;
-  padding: 0.6rem;
-  display: flex;
-  align-items: center;
-
-  .menu-icon {
-    margin-right: 1rem;
-  }
-
-  h1 {
-    flex: 1;
-  }
+h1{
+  font-weight: lighter;
 }
 
 main {
@@ -124,7 +135,6 @@ input[type='submit'] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #33c3f0;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -138,9 +148,9 @@ input[type='submit'] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
-  color: #fff;
-  background-color: #33c3f0;
-  border-color: #33c3f0;
+  color: lighten($text-color, 10%);
+  background-color: $primarycolor;
+  border-color: $primarycolorborder;
 
   &:hover {
     color: #fff;
