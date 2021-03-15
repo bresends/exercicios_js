@@ -5,11 +5,11 @@ import './style.scss';
 import jsImage from './js.png';
 
 const Menu = () => {
+
   return (
     <div className="menu">
-
       <IC.Provider value={{ className: 'close' }}>
-        <HiIcons.HiX />
+        <HiIcons.HiX/>
       </IC.Provider>
 
       <ul>
