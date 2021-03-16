@@ -1,0 +1,65 @@
+/* Menus ––––––––––––––––––––––––––––––– */
+.menu-permanente {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
+  padding: 0.6rem;
+}
+
+.menu-flutuante {
+  position: fixed;
+  width: 70%;
+  max-width: 300px;
+  height: 100vh;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+
+  h1 {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.ativo {
+  left: 0;
+  transition: 350ms;
+}
+
+.menu-flutuante-btn-fechar {
+  position: absolute;
+  right: 0;
+}
+
+/* Links –––––––––––––––––––––––––––––– */
+
+.menu-flutuante ul {
+  li {
+    border-bottom: 1px solid #bbb;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+
+    span {
+      margin-left: 0.4rem;
+      user-select: none;
+    }
+
+    &:hover {
+      background-color: #66666618;
+    }
+  }
+}
+
+.menu-flutuante a {
+  background-color: aqua;
+  img {
+    max-width: 75px;
+  }
+}

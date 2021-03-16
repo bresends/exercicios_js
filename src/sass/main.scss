@@ -1,0 +1,10 @@
+// Globais
+@import './variables';
+@import './resets';
+@import './global';
+@import './typography';
+
+// Componentes
+@import '../components/App.scss';
+@import '../components/Menu/Menu.scss';
+@import '../components/Card/Card.scss';
