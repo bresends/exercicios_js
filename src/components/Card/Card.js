@@ -2,9 +2,9 @@ import React from 'react';
 
 const Card = (props) => {
   return (
-    <div className="general-card">
+    <div className="center-card">
       {props.children}
-      <footer> Bruno Resende &copy; {new Date().getFullYear()}</footer>
+      <footer className='center-card__footer'> Bruno Resende &copy; {new Date().getFullYear()}</footer>
     </div>
   );
 };

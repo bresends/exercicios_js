@@ -8,6 +8,18 @@ import { IconContext } from 'react-icons';
 import jsImage from './js.png';
 
 // Main
+
+function MenuLink({ exercicio }) {
+  return (
+    <li className="menu-flutuante__item">
+      <Link to={`Ex${exercicio}`} className="menu-flutuante__link">
+        <img src={jsImage} alt="jsIcon" className="menu-flutuante__img" />
+        <p className="menu-flutuante__texto">Exercicio {exercicio}</p>
+      </Link>
+    </li>
+  );
+}
+
 function Menu() {
   const [menuLateral, setmenuLateral] = useState(false);
 
@@ -18,30 +30,22 @@ function Menu() {
   return (
     <IconContext.Provider value={{ size: '3.8rem' }}>
       <nav className="menu-permanente">
-        <Link className="menu-permanente--btn-menu">
+        <Link className="menu-permanente__btn-menu">
           <HiIcons.HiMenuAlt2 onClick={toogleMenu} />
         </Link>
-        <h1>Exercícios JavaScript</h1>
+        <h1 className="menu-permanente__titulo">Exercícios JavaScript</h1>
       </nav>
 
-      <nav className={menuLateral ? 'menu-flutuante ativo' : 'menu-flutuante'}>
-        <Link className="menu-flutuante-btn-fechar">
+      <nav
+        className={menuLateral ? 'menu-flutuante isactive' : 'menu-flutuante'}
+      >
+        <Link className="menu-flutuante__btn-fechar">
           <HiIcons.HiX onClick={toogleMenu} />
         </Link>
-        <ul className="nav-menu-items" onClick={toogleMenu}>
-          <li>
-            <Link to="/Ex1" className="item-menu">
-              <img src={jsImage} alt="jsIcon" />
-              <span>Exercicio 1</span>
-            </Link>
-          </li>
 
-          <li>
-            <Link to="/Ex2" className="item-menu">
-              <img src={jsImage} alt="jsIcon" />
-              <span>Exercicio 2</span>
-            </Link>
-          </li>
+        <ul className="menu-flutuante__container" onClick={toogleMenu}>
+          <MenuLink exercicio="1" />
+          <MenuLink exercicio="2" />
         </ul>
       </nav>
     </IconContext.Provider>
