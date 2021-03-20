@@ -5,7 +5,8 @@ a {
 
 /* Forms ––––––––––––––––––––––––––– */
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
@@ -20,6 +21,7 @@ textarea {
   padding-top: 6px;
   padding-bottom: 6px;
 }
+
 input[type='email']:focus,
 input[type='number']:focus,
 input[type='search']:focus,
@@ -75,10 +77,15 @@ input[type='submit'] {
   color: lighten($text-color, 10%);
   background-color: $primarycolor;
   border-color: $primarycolorborder;
+  outline: none;
 
   &:hover {
     color: #fff;
     border-color: darken($primarycolorborder, 5%);
+  }
+
+  &:active{
+    background-color: darken($primarycolor, 15%)
   }
 }
 

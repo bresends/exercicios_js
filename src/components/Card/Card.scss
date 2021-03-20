@@ -1,8 +1,9 @@
 .center-card {
   width: 90%;
-  max-width: 750px;
+  min-width: 350px;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 2rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 3px 1px;
 
   &__title {
@@ -11,34 +12,30 @@
     margin-bottom: 1rem;
   }
 
-  &__question-title{
-    padding-bottom: .8rem;
+  &__question-title {
+    padding-bottom: 0.8rem;
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-  }
-  
-  &__input {
-      width: 100%;
-      margin: 10px auto;
-    }
-
-  &__answer{
+  &__answer {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    min-height: 300px;
+    line-height: 1.5rem;
     border: 1px solid #d1d1d1;
     border-radius: 4px;
-    line-height: 1.5rem;
-    min-height: 300px;
-    padding: .5rem;
-    margin-top: 1rem;
     user-select: none;
   }
 
   &__footer {
     padding: 0.6rem;
     text-align: center;
+  }
+}
+
+@media (min-width: 1100px) {
+  .center-card {
+    &__answer {
+      min-height: 50vh;
+    }
   }
 }
