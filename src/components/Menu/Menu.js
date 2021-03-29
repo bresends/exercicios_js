@@ -46,6 +46,7 @@ function Menu() {
         <ul className="menu-flutuante__container" onClick={toogleMenu}>
           <MenuLink exercicio="1" />
           <MenuLink exercicio="2" />
+          <MenuLink exercicio="3" />
         </ul>
       </nav>
     </IconContext.Provider>
