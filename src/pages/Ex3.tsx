@@ -15,6 +15,63 @@ const DivStyle = styled.div`
   }
 `;
 
+class Variable {
+  private input: string;
+  readonly type: string;
+  readonly empty: boolean;
+  readonly isNumber: boolean;
+  readonly isAlfabetical: boolean;
+  readonly isAlfanumeric: boolean;
+  readonly isUpperCase: boolean;
+  readonly isLowerCase: boolean;
+  readonly isCapitalized: boolean;
+
+  constructor(input: string) {
+    this.input = input.trim();
+    this.type = this.testType();
+    this.empty = this.testEmpty();
+    this.isNumber = this.type === `number` ? true : false;
+    this.isAlfanumeric = this.testAlfanumeric();
+    this.isAlfabetical = this.type === `string` && !this.isAlfanumeric;
+    this.isUpperCase =
+      this.input.toUpperCase() === input && this.type === `string`;
+    this.isLowerCase =
+      this.input.toLowerCase() === input && this.type === `string`;
+    this.isCapitalized =
+      !this.isUpperCase && !this.isLowerCase && this.type === `string`;
+  }
+
+  private testType() {
+    const tryNumber = Number(this.input);
+
+    if (isNaN(tryNumber)) {
+      return 'string';
+    } else if (!isNaN(tryNumber) && this.input.length > 0) {
+      return `number`;
+    } else {
+      return `null`;
+    }
+  }
+
+  private testEmpty() {
+    if (this.input) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  private testAlfanumeric() {
+    // Test if there is a number in the string
+    const testNumber = /\d+\.\d+|\d+,\d+|\d+/;
+    if (this.type !== `number` && this.input.match(testNumber)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
 const Ex3 = () => {
   const [valorInput, setValorInput] = useState('');
   const [respostaFinal, setRespostaFinal] = useState('');
@@ -23,17 +80,8 @@ const Ex3 = () => {
     setRespostaFinal('Por favor, digite algo');
   }
 
-  function validaTipo(input) {
-    const testeNumero = Number(input);
-    if (isNaN(testeNumero)) {
-      return `${valorInput} é do tipo String`;
-    } else if (!isNaN(testeNumero) & (input.length > 0)) {
-      return `${valorInput} é do tipo Number`;
-    }
-  }
-
   function validaCapitulacao(input) {
-    if (input.toUpperCase() === input && isNaN(input)) {
+    if (input) {
       return 'Maíscula';
     } else if (input.toLowerCase() === input && isNaN(input)) {
       return 'Minúscula';
@@ -88,3 +136,4 @@ const Ex3 = () => {
 };
 
 export default Ex3;
+export { Variable };
