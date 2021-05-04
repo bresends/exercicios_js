@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card/Card';
 
@@ -17,8 +17,9 @@ const DivStyle = styled.div`
 
 class Variable {
   private input: string;
-  readonly type: string;
   readonly empty: boolean;
+  readonly type: string;
+  readonly onlySpaces: boolean;
   readonly isNumber: boolean;
   readonly isAlfabetical: boolean;
   readonly isAlfanumeric: boolean;
@@ -27,9 +28,10 @@ class Variable {
   readonly isCapitalized: boolean;
 
   constructor(input: string) {
+    this.empty = Boolean(input.match(/^(?![\s\S])/));
     this.input = input.trim();
     this.type = this.testType();
-    this.empty = this.testEmpty();
+    this.onlySpaces = this.testEmpty();
     this.isNumber = this.type === `number` ? true : false;
     this.isAlfanumeric = this.testAlfanumeric();
     this.isAlfabetical = this.type === `string` && !this.isAlfanumeric;
@@ -76,34 +78,39 @@ const Ex3 = () => {
   const [valorInput, setValorInput] = useState('');
   const [respostaFinal, setRespostaFinal] = useState('');
 
-  function entradaVazia() {
-    setRespostaFinal('Por favor, digite algo');
-  }
-
-  function validaCapitulacao(input) {
-    if (input) {
-      return 'Maíscula';
-    } else if (input.toLowerCase() === input && isNaN(input)) {
-      return 'Minúscula';
-    } else if (input[0].toUpperCase() === input[0] && isNaN(input)) {
-      return 'Capitalizada';
-    }
-  }
-
-  function entradaValida() {
-    const tipo = validaTipo(valorInput);
-    const capitulacao = validaCapitulacao(valorInput);
-    setRespostaFinal(`${tipo} ${capitulacao}`);
-  }
-
-  function entregarResposta(e) {
+  const output = (e: MouseEvent) => {
     e.preventDefault();
 
-    // Decide se a resposta é vazia ou resposta completa
-    valorInput.trim().length === 0 ? entradaVazia() : entradaValida();
+    const inputController = new Variable(valorInput);
 
+    if (inputController.type === `string`) {
+      let resposta = `O tipo primitivo de ${valorInput} é string`;
+
+      if (inputController.isAlfabetical) {
+        resposta += ', possui apenas letras ';
+      } else if (inputController.isAlfanumeric) {
+        resposta += ', é alfanumérico ';
+      }
+
+      if (inputController.isUpperCase) {
+        resposta += 'e está escrito em letras maísculas';
+      } else if (inputController.isLowerCase) {
+        resposta += 'e está escrito em letras minúsculas';
+      } else {
+        resposta += 'e está capitalizado';
+      }
+
+      setRespostaFinal(resposta);
+    } else if (inputController.type === `number`) {
+      setRespostaFinal(`O tipo primitivo de ${valorInput} é number`);
+    } else if (inputController.empty) {
+      setRespostaFinal('Por favor, digite algo.');
+    } else if (inputController.onlySpaces) {
+      setRespostaFinal('Há apenas espaços vazios.');
+    }
     setValorInput('');
-  }
+  };
+
   return (
     <Card>
       <h2 className="center-card__title">Exercicio 3 - Dissecando Variável</h2>
@@ -121,7 +128,7 @@ const Ex3 = () => {
           <input
             type="submit"
             value="Clique"
-            onClick={entregarResposta}
+            onClick={(e: MouseEvent) => output(e)}
             className="center-card__button"
           />
         </form>
