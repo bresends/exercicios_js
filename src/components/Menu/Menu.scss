@@ -6,13 +6,22 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 2px 1px;
   padding: 0.6rem;
 
-  &__titulo{
+  &__titulo {
     user-select: none;
     font-size: 2.6rem;
   }
 
-  &__btn-menu{
+  &__btn-menu {
+    border: none;
+    background-color: white;
     user-select: none;
+    padding: 0 0;
+    transition: transform 250ms ease-in;
+  }
+
+  &__btn-menu:hover {
+    color: hsl(180, 2%, 27%);
+    transform: scale(1.1);
   }
 }
 
@@ -28,6 +37,10 @@
   transition: 450ms;
 
   &__btn-fechar {
+    border: none;
+    padding: 0;
+    background-color: white;
+    user-select: none;
     position: absolute;
     right: 0;
   }
@@ -67,19 +80,17 @@
   transition: 250ms;
 }
 
-@media (min-width: 1800px){
-  .menu-permanente{
-    &__titulo{
+@media (min-width: 1800px) {
+  .menu-permanente {
+    &__titulo {
       font-size: 4rem;
     }
   }
-  .menu-flutuante{
+  .menu-flutuante {
     max-width: 350px;
 
-    &__texto{
+    &__texto {
       font-size: 2.2rem;
     }
   }
-
-
 }

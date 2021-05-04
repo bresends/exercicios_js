@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card/Card';
 
@@ -15,16 +15,31 @@ const DivStyle = styled.div`
   }
 `;
 
+/**
+ * Takes a input and test if it is a empty string, a number ou a valid name
+ * Test number with a regex d+ that means all numbers. 
+ */
+
+function helloNome(name: string): string {
+  name = name.trim();
+  if (name) {
+    const testNumber = name.match(/\d+/);
+    if (!testNumber) {
+      return `Olá ${name}!`;
+    } else if (testNumber) {
+      return `Você digitou um número. Digite um nome`;
+    }
+  }
+  return `Por favor, digite algo`;
+}
+
 const Ex1 = () => {
   const [valorInput, setValorInput] = useState('');
   const [respostaFinal, setRespostaFinal] = useState('');
 
-  function entregarResposta(e) {
+  function entregarResposta(e: MouseEvent) {
     e.preventDefault();
-    valorInput
-      ? setRespostaFinal(`Olá ${valorInput}!`)
-      : setRespostaFinal('Por favor, digite algo');
-
+    setRespostaFinal(helloNome(valorInput));
     setValorInput('');
   }
   return (
@@ -61,3 +76,4 @@ const Ex1 = () => {
 };
 
 export default Ex1;
+export { helloNome };

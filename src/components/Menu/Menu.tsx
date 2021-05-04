@@ -9,7 +9,11 @@ import jsImage from './js.png';
 
 // Main
 
-function MenuLink({ exercicio }) {
+type Props = {
+  exercicio: string;
+};
+
+function MenuLink({ exercicio }: Props) {
   return (
     <li className="menu-flutuante__item">
       <Link to={`Ex${exercicio}`} className="menu-flutuante__link">
@@ -30,18 +34,18 @@ function Menu() {
   return (
     <IconContext.Provider value={{ size: '3.8rem' }}>
       <nav className="menu-permanente">
-        <Link className="menu-permanente__btn-menu">
+        <button className="menu-permanente__btn-menu">
           <HiIcons.HiMenuAlt2 onClick={toogleMenu} />
-        </Link>
+        </button>
         <h1 className="menu-permanente__titulo">Exercícios JavaScript</h1>
       </nav>
 
       <nav
         className={menuLateral ? 'menu-flutuante isactive' : 'menu-flutuante'}
       >
-        <Link className="menu-flutuante__btn-fechar">
+        <button className="menu-flutuante__btn-fechar">
           <HiIcons.HiX onClick={toogleMenu} />
-        </Link>
+        </button>
 
         <ul className="menu-flutuante__container" onClick={toogleMenu}>
           <MenuLink exercicio="1" />
